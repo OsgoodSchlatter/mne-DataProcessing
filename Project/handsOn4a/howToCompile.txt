@@ -1,0 +1,5 @@
+1)
+g++ -c getArea.cxx -o getArea.o
+2)
+g++ -o run main.cxx getArea.o  
+3) ./run
