@@ -9,7 +9,7 @@ using namespace std;
 
 float computeDefaultAngle(float ee, float eg)
 {
-    const float electronMassKeV = 511;
+    const float electronMassKeV = 510.99895000;
     float angle1 = 1 - electronMassKeV / eg + electronMassKeV / (ee + eg);
     if (angle1 < 1 && angle1 > -1)
     {
