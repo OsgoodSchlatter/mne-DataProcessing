@@ -10,10 +10,10 @@ using namespace std;
 float computeDefaultAngle(float energyEKeV, float energyGKeV)
 {
     const float electronMassKeV = 510.99895000;
-    float angle1 = 1 - electronMassKeV / energyGKeV + electronMassKeV / (energyEKeV + energyGKeV);
-    if (angle1 < 1 && angle1 > -1)
+    float cosAngle1 = 1 - electronMassKeV / energyGKeV + electronMassKeV / (energyEKeV + energyGKeV);
+    if (cosAngle1 < 1 && cosAngle1 > -1)
     {
-        return std::acos(angle1);
+        return 1 - 2 * pow(std::asin(cosAngle1 / 2), 2);
     }
     return -100.0;
 }
