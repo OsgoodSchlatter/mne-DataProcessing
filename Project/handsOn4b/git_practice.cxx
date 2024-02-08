@@ -7,10 +7,10 @@
 
 using namespace std;
 
-float computeDefaultAngle(float ee, float eg)
+float computeDefaultAngle(float energyEKeV, float energyGKeV)
 {
     const float electronMassKeV = 510.99895000;
-    float angle1 = 1 - electronMassKeV / eg + electronMassKeV / (ee + eg);
+    float angle1 = 1 - electronMassKeV / energyGKeV + electronMassKeV / (energyEKeV + energyGKeV);
     if (angle1 < 1 && angle1 > -1)
     {
         return std::acos(angle1);
@@ -33,11 +33,11 @@ int main()
 
     for (size_t idx = 0; idx < eeVector.size(); ++idx)
     {
-        const float ee = eeVector[idx]; // Energy of recoil electron
-        const float eg = egVector[idx]; // Energy of scattered gamma ray
+        const float energyEKeV = eeVector[idx]; // Energy of recoil electron
+        const float energyGKeV = egVector[idx]; // Energy of scattered gamma ray
         cout
-            << ee << ' ' << eg << ':'
-            << ' ' << computeDefaultAngle(ee, eg)
+            << energyEKeV << ' ' << energyGKeV << ':'
+            << ' ' << computeDefaultAngle(energyEKeV, energyGKeV)
             << '\n';
     }
 }
