@@ -4,9 +4,10 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
+#include "Nucleus.h"
 
 using namespace std;
-// hello
 // 'readNuclei' main function
 int main()
 {
@@ -27,6 +28,7 @@ int main()
   getline(myFile, commentLine);
 
   int counter = 0;
+  vector<Nucleus> nuclei;
   while (!myFile.eof())
   {
     // Define variables to hold data
@@ -39,6 +41,15 @@ int main()
     // Read data of one line
     myFile >> a >> z >> name >> halfLife >> bindingEnergy;
 
+    // Define Nucleus object
+    Nucleus nucleus;
+    nucleus.setName(name);
+    nucleus.setZ(z);
+    nucleus.setA(a);
+    nucleus.setHalflife(halfLife);
+    nucleus.setBindingEnergy(bindingEnergy);
+    nuclei.push_back(nucleus);
+
     // Control printing
     cout << "Read: " << a << " " << z << " " << name << " " << halfLife << " " << bindingEnergy << endl;
 
@@ -46,4 +57,9 @@ int main()
   }
 
   cout << "Read " << counter << " nuclei." << endl;
+  cout << "Nuclei stored in a vector: " << endl;
+  for (Nucleus nucleus : nuclei)
+  {
+    cout << nucleus << endl;
+  }
 }
